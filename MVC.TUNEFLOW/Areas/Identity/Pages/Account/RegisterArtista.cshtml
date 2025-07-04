@@ -1,0 +1,108 @@
+﻿@page
+@model MVC.TUNEFLOW.Areas.Identity.Pages.Account.RegisterArtistaModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Registro Artista";
+}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"] - TuneFlow</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/register.css" rel="stylesheet" /> <!-- Tu CSS personalizado -->
+</head>
+<body>
+    <header class="logo-container">
+        <img src="~/img/Logo_Letras_Negro.png" alt="Logo TuneFlow" class="logo-img" />
+    </header>
+
+    <main class="main-register">
+        <div class="register-container">
+            <div class="image-section">
+                <img src="~/img/RegisterArtista.png" alt="Imagen de artista" class="register-image" />
+            </div>
+            <div class="form-section">
+                <h2 class="form-title">@ViewData["Title"]</h2>
+                <form method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Nombre" class="form-control" placeholder="Nombre" />
+                        <label asp-for="Input.Nombre"></label>
+                        <span asp-validation-for="Input.Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Apellido" class="form-control" placeholder="Apellido" />
+                        <label asp-for="Input.Apellido"></label>
+                        <span asp-validation-for="Input.Apellido" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Telefono" class="form-control" placeholder="Teléfono" />
+                        <label asp-for="Input.Telefono"></label>
+                        <span asp-validation-for="Input.Telefono" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Email" class="form-control" placeholder="Correo electrónico" autocomplete="username" />
+                        <label asp-for="Input.Email"></label>
+                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select asp-for="Input.PaisId" asp-items="Model.Paises" class="form-select">
+                            <option value="">-- Selecciona un país --</option>
+                        </select>
+                        <label asp-for="Input.PaisId"></label>
+                        <span asp-validation-for="Input.PaisId" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.FechaNacimiento" type="date" class="form-control" />
+                        <label asp-for="Input.FechaNacimiento"></label>
+                        <span asp-validation-for="Input.FechaNacimiento" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.NombreArtistico" class="form-control" placeholder="Nombre artístico" />
+                        <label asp-for="Input.NombreArtistico"></label>
+                        <span asp-validation-for="Input.NombreArtistico" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.GeneroMusical" class="form-control" placeholder="Género musical" />
+                        <label asp-for="Input.GeneroMusical"></label>
+                        <span asp-validation-for="Input.GeneroMusical" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <textarea asp-for="Input.Biografia" class="form-control" placeholder="Biografía" style="height: 100px;"></textarea>
+                        <label asp-for="Input.Biografia"></label>
+                        <span asp-validation-for="Input.Biografia" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Password" class="form-control" placeholder="Contraseña" autocomplete="new-password" />
+                        <label asp-for="Input.Password"></label>
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirmar contraseña" autocomplete="new-password" />
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100">Registrar Artista</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+</body>
+</html>
