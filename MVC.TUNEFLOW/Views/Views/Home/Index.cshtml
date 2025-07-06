@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "TuneFlow";
+}
+
+<div class="auth-wrapper">
+    <div class="auth-sidebar"></div>
+
+    <div class="auth-main-content">
+        <div class="welcome-content">
+            <img id="logoDynamic" class="logo-img dynamic-logo" src="~/img/Logo_Letras_Negro.png" alt="TuneFlow Logo" />
+
+            <a href="/Identity/Account/Login" class="btn btn-primary mt-4 btn-inicio">INICIAR</a>
+
+            <img id="heroDynamic" class="hero-img dynamic-hero mt-4" src="~/img/escucha_blanco.png" alt="Escucha música" />
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const logo = document.getElementById('logoDynamic');
+            const hero = document.getElementById('heroDynamic');
+
+            function updateImages() {
+                const theme = document.documentElement.getAttribute("data-theme") || "light";
+                logo.src = theme === "dark" ? "/img/Logo_Letras_Negro.png" : "/img/Logo_Letras_Blanco.png";
+                hero.src = theme === "dark" ? "/img/escucha_negro.png" : "/img/escucha_blanco.png";
+            }
+
+            updateImages();
+
+            document.addEventListener('themeChanged', () => {
+                updateImages();
+            });
+        });
+    </script>
+}

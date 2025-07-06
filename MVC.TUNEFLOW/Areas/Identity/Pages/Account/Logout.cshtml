@@ -1,21 +1,31 @@
 ﻿@page
 @model LogoutModel
 @{
-    ViewData["Title"] = "Log out";
+    ViewData["Title"] = "Cerrar sesión";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
-<header>
-    <h1>@ViewData["Title"]</h1>
-    @{
-        if (User.Identity?.IsAuthenticated ?? false)
-        {
-            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
-                <button type="submit" class="nav-link btn btn-link text-dark">Click here to Logout</button>
-            </form>
-        }
-        else
-        {
-            <p>You have successfully logged out of the application.</p>
-        }
-    }
-</header>
+<div class="auth-wrapper">
+    <div class="auth-content">
+        <div class="col-md-6 d-none d-md-block text-center">
+            <img src="~/img/logout.png" alt="Imagen de artista" class="img-fluid rounded-start" />
+        </div>
+
+        <div class="auth-form">
+            <h2 class="form-title">@ViewData["Title"]</h2>
+            @if (User.Identity?.IsAuthenticated ?? false)
+            {
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="btn btn-danger w-100">Cerrar sesión</button>
+                </form>
+            }
+            else
+            {
+                <p>Has cerrado sesión exitosamente.</p>
+            }
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

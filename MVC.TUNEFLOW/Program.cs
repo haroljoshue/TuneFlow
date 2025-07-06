@@ -20,6 +20,7 @@ namespace MVC.TUNEFLOW
         {
 
             var builder = WebApplication.CreateBuilder(args);
+
             Crud<Administrador>.EndPoint = "https://localhost:7031/api/Administradores";
             Crud<Album>.EndPoint = "https://localhost:7031/api/Albums";
             Crud<Cancion>.EndPoint = "https://localhost:7031/api/Canciones";
@@ -36,7 +37,6 @@ namespace MVC.TUNEFLOW
             Crud<TipoSuscripcion>.EndPoint = "https://localhost:7031/api/TiposSuscripciones";
             Crud<Playlist>.EndPoint = "https://localhost:7031/api/Playlists";
             Crud<Pais>.EndPoint = "https://localhost:7031/api/Paises";
-
 
             // Add services to the container.
             var connectionString = WebApplication.CreateBuilder(args);
