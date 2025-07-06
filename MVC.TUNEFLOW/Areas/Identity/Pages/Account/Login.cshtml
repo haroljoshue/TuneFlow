@@ -1,46 +1,43 @@
 ﻿@page
 @model LoginModel
 @{
-    Layout = "~/Views/Shared/AuthLayout.cshtml";
-    ViewData["Title"] = "Iniciar sesión";
+    ViewData["Title"] = "Iniciar Sesión";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }
 
-<div class="auth-wrapper">
-    <div class="auth-content">
-        <div class="auth-image">
-            <img src="~/img/Login.png" alt="Imagen de login" />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 d-none d-md-block text-center">
+            <img src="~/img/login.png" alt="Login Image" class="img-fluid rounded-start" />
         </div>
-
-        <div class="auth-form">
-            <h2 class="form-title">@ViewData["Title"]</h2>
+        <div class="col-md-6">
+            <h1 class="mb-4 text-center">@ViewData["Title"]</h1>
             <form id="account" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3" role="alert"></div>
+                <h5 class="text-center mb-3">Inicia sesión con tu cuenta</h5>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
 
-                <div class="mb-3">
-                    <label asp-for="Input.Email" class="form-label">Correo electrónico</label>
-                    <input asp-for="Input.Email" class="form-control" autocomplete="username" placeholder="nombre@correo.com" />
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email">Email</label>
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
 
-                <div class="mb-3">
-                    <label asp-for="Input.Password" class="form-label">Contraseña</label>
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" placeholder="••••••••" />
+                <div class="form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Password" />
+                    <label asp-for="Input.Password">Contraseña</label>
                     <span asp-validation-for="Input.Password" class="text-danger"></span>
                 </div>
 
-                <div class="form-check mb-3">
-                    <input asp-for="Input.RememberMe" class="form-check-input" />
-                    <label asp-for="Input.RememberMe" class="form-check-label">
-                        @Html.DisplayNameFor(m => m.Input.RememberMe)
-                    </label>
-                </div>
+                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary mb-3">Iniciar sesión</button>
 
-                <button id="login-submit" type="submit" class="btn btn-primary w-100">Iniciar sesión</button>
+                <div><p> </p><br /</div>
+                <div class="text-center">
+                    <a asp-page="./ForgotPassword">¿Olvidaste tu contraseña?</a><br />
+                    <p>¿No tienes cuenta? Regístrate como:</p>
+                    <a asp-page="./RegisterCliente" asp-route-returnUrl="@Model.ReturnUrl">Oyente</a><br />
+                    <a asp-page="./RegisterArtista" asp-route-returnUrl="@Model.ReturnUrl">Artista</a><br />
 
-                <div class="mt-4 text-center">
-                    <p><a id="forgot-password" asp-page="./ForgotPassword">¿Olvidaste tu contraseña?</a></p>
-                    <p><a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">¿No tienes una cuenta? Regístrate</a></p>
-                    <p><a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Reenviar confirmación de correo</a></p>
                 </div>
             </form>
         </div>

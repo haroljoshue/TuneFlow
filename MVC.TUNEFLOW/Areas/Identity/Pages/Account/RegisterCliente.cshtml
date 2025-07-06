@@ -1,61 +1,69 @@
 ﻿@page
 @model MVC.TUNEFLOW.Areas.Identity.Pages.Account.RegisterClienteModel
 @{
-    Layout = "~/Views/Shared/AuthLayout.cshtml";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
     ViewData["Title"] = "Registro Cliente";
 }
 
-<div class="auth-wrapper">
-    <div class="auth-content">
-        <div class="auth-image">
-            <img src="~/img/Register.png" alt="Imagen de registro cliente" />
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 d-none d-md-block text-center">
+            <img src="~/img/Register.png" alt="Imagen de artista" class="img-fluid rounded-start" />
         </div>
 
-        <div class="auth-form">
-            <h2 class="form-title">@ViewData["Title"]</h2>
+        <div class="col-md-6">
+            <h1 class="mb-4 text-center">@ViewData["Title"]</h1>
             <form method="post">
                 <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                <div class="mb-3">
-                    <label asp-for="Input.Nombre" class="form-label">Nombre</label>
-                    <input asp-for="Input.Nombre" class="form-control" />
-                    <span asp-validation-for="Input.Nombre" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.Nombre"></label>
+                        <input asp-for="Input.Nombre" class="form-control" />
+                        <span asp-validation-for="Input.Nombre" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.Apellido"></label>
+                        <input asp-for="Input.Apellido" class="form-control" />
+                        <span asp-validation-for="Input.Apellido" class="text-danger"></span>
+                    </div>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Input.Apellido" class="form-label">Apellido</label>
-                    <input asp-for="Input.Apellido" class="form-control" />
-                    <span asp-validation-for="Input.Apellido" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Input.Email" class="form-label">Email</label>
+                    <label asp-for="Input.Email"></label>
                     <input asp-for="Input.Email" class="form-control" autocomplete="username" />
                     <span asp-validation-for="Input.Email" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Input.PaisId" class="form-label">País</label>
+                    <label asp-for="Input.Telefono"></label>
+                    <input asp-for="Input.Telefono" class="form-control" />
+                    <span asp-validation-for="Input.Telefono" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Input.PaisId"></label>
                     <select asp-for="Input.PaisId" asp-items="Model.Paises" class="form-select"></select>
                     <span asp-validation-for="Input.PaisId" class="text-danger"></span>
                 </div>
 
                 <div class="mb-3">
-                    <label asp-for="Input.FechaNacimiento" class="form-label">Fecha de nacimiento</label>
+                    <label asp-for="Input.FechaNacimiento"></label>
                     <input asp-for="Input.FechaNacimiento" type="date" class="form-control" />
                     <span asp-validation-for="Input.FechaNacimiento" class="text-danger"></span>
                 </div>
 
-                <div class="mb-3">
-                    <label asp-for="Input.Password" class="form-label">Contraseña</label>
-                    <input asp-for="Input.Password" class="form-control" autocomplete="new-password" />
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Input.ConfirmPassword" class="form-label">Confirmar contraseña</label>
-                    <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" />
-                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.Password"></label>
+                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" />
+                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="Input.ConfirmPassword"></label>
+                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" />
+                        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary w-100">Registrar Cliente</button>
@@ -63,3 +71,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

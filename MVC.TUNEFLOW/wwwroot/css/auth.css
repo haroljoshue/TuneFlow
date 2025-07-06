@@ -1,0 +1,348 @@
+﻿/* =======================
+   🎧 TuneFlow - Auth CSS Mejorado Profesional
+   ======================= */
+
+/* 🎨 Variables globales para colores, bordes y transiciones */
+:root {
+    --primary: #6c63ff;
+    --primary-dark: #5851db;
+    --radius: 12px;
+    --transition: 0.3s ease;
+}
+
+    /* Variables para tema claro */
+    :root[data-theme='light'] {
+        --bg: #f2f2f2;
+        --card-bg: rgba(255, 255, 255, 0.95);
+        --text-color: #1a1a1a;
+        --input-bg: transparent;
+        --border-color: #ccc;
+        --input-focus: rgba(108, 99, 255, 0.3);
+        --footer-bg: #dedff3; /* Color más profesional para footer claro */
+    }
+
+    /* Variables para tema oscuro */
+    :root[data-theme='dark'] {
+        --bg: #0f0f0f;
+        --card-bg: rgba(25, 25, 25, 0.95);
+        --text-color: #eaeaea;
+        --input-bg: transparent;
+        --border-color: #444;
+        --input-focus: rgba(108, 99, 255, 0.2);
+        --footer-bg: #252540; /* Color oscuro profesional para footer */
+    }
+
+/* ========== ESTILOS GENERALES DEL BODY Y CONTENEDORES ========== */
+
+.auth-body {
+    background-color: var(--bg);
+    font-family: 'Inter', sans-serif;
+    color: var(--text-color);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    transition: background-color var(--transition), color var(--transition);
+    overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Wrapper principal que contiene sidebar y contenido */
+.auth-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra lateral ancha para navegación o branding */
+.auth-sidebar {
+    width: 140px; /* Ancho ampliado para mejor visibilidad */
+    background-color: var(--primary);
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenido principal al lado derecho de la sidebar */
+.auth-main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 3rem; /* Espaciado amplio para comodidad visual */
+    position: relative;
+    background-color: var(--bg);
+    transition: background-color var(--transition);
+}
+
+/* ========== CONTENIDO DE BIENVENIDA ========== */
+
+.welcome-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    padding-top: 2rem;
+}
+
+/* ========== FORMULARIO MEJORADO Y MODERNO ========== */
+
+.auth-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 480px;
+    background: var(--card-bg);
+    backdrop-filter: blur(10px); /* Efecto vidrio esmerilado */
+    border-radius: var(--radius);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 3.5rem 2.5rem;
+    animation: fadeIn 0.4s ease;
+    margin: 2.5rem 0; /* Margen superior e inferior para separación clara */
+}
+
+.form-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem; /* Espacio amplio debajo del título */
+}
+
+/* Cada grupo de input + label */
+.form-group {
+    position: relative;
+    margin-bottom: 2.4rem; /* Espacio cómodo entre inputs */
+}
+
+    /* Inputs sin bordes laterales, solo borde inferior */
+    .form-group input {
+        width: 100%;
+        padding: 1.2rem 0.5rem 0.5rem 0.5rem;
+        background: none;
+        border: none;
+        border-bottom: 2px solid var(--border-color);
+        font-size: 1.05rem;
+        color: var(--text-color);
+        transition: all var(--transition);
+    }
+
+        /* Efecto foco y sombra para inputs */
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 2px 0 var(--primary);
+        }
+
+    /* Labels flotantes */
+    .form-group label {
+        position: absolute;
+        left: 0.5rem;
+        top: 1.2rem;
+        pointer-events: none;
+        transition: 0.3s ease all;
+        color: #999;
+        background-color: var(--card-bg);
+        padding: 0 6px;
+        border-radius: 4px;
+    }
+
+    /* Labels se mueven arriba cuando el input está enfocado o tiene texto */
+    .form-group input:focus + label,
+    .form-group input:not(:placeholder-shown) + label {
+        top: -0.8rem;
+        font-size: 0.85rem;
+        color: var(--primary);
+    }
+
+/* Placeholder invisible para dar efecto limpio */
+input::placeholder {
+    color: transparent;
+}
+
+/* ========== BOTONES ========== */
+
+.btn-inicio {
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    min-width: 160px;
+}
+
+button[type="submit"],
+.btn-primary {
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    padding: 0.75rem 1.1rem;
+    border: none;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition), box-shadow var(--transition);
+    box-shadow: 0 4px 12px rgba(108, 99, 255, 0.4);
+    margin-top: 1.5rem; /* Margen superior para separar del último input */
+}
+
+    button[type="submit"]:hover,
+    .btn-primary:hover {
+        background-color: var(--primary-dark);
+        box-shadow: 0 4px 16px rgba(108, 99, 255, 0.6);
+    }
+
+/* ========== FOOTER PROFESIONAL Y FUNCIONAL ========== */
+
+/* === 📌 FOOTER === */
+footer.auth-footer {
+    background-color: var(--bg);
+    color: var(--text-color);
+    text-align: center;
+    padding: 2rem 1rem;
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Footer logo */
+.footer-logo {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+
+}
+.auth-footer .footer-description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0.5rem;
+}
+
+/* === 🌗 SWITCH DARK MODE === */
+.theme-switch-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.switch {
+    position: relative;
+    width: 52px;
+    height: 28px;
+}
+
+    .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #999;
+    border-radius: 34px;
+    transition: var(--transition);
+}
+
+    .slider:before {
+        content: "";
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        left: 3px;
+        bottom: 3px;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: var(--transition);
+    }
+
+input:checked + .slider {
+    background-color: var(--primary);
+}
+
+    input:checked + .slider:before {
+        transform: translateX(24px);
+    }
+
+.switch-label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+
+/* ========== IMÁGENES DINÁMICAS ========== */
+
+.dynamic-logo,
+.dynamic-hero {
+    max-width: 100%;
+    transition: opacity 0.3s ease;
+}
+
+.logo-img {
+    width: 280px;
+    max-width: 90%;
+}
+
+.hero-img {
+    width: 400px;
+    max-width: 90%;
+}
+
+/* ========== ANIMACIÓN SUAVE ========== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== ESTILOS RESPONSIVOS ========== */
+
+@media (max-width: 768px) {
+    /* Oculta sidebar en pantallas pequeñas */
+    .auth-sidebar {
+        display: none;
+    }
+
+    /* Ajusta tamaño de logos para móviles */
+    .logo-img {
+        width: 200px;
+    }
+
+    .hero-img {
+        width: 280px;
+    }
+
+    /* Reduce padding del contenido principal para móviles */
+    .auth-main-content {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Ajusta padding y margen de formulario para dispositivos móviles */
+    .auth-content {
+        padding: 2.5rem 1.5rem;
+        margin: 1.5rem 0;
+    }
+}
+/* ========== ESTILOS PERSONALIZADOS PARA BOOTSTRAP CONTAINERS ========== */
+
+/* Márgenes verticales amplios para containers con .mt-5 */
+.container.mt-5 {
+    margin-top: 6rem !important; /* Reemplaza Bootstrap mt-5 para asegurar visibilidad */
+    margin-bottom: 6rem !important; /* Agregado para evitar que el footer se sobreponga */
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
